@@ -1,0 +1,14 @@
+package com.jslhrd.test02;
+
+// 추상클래스 : 실체가 없는 클래스 -> 메소드 내용이 없는 클래스
+abstract class E {
+	int a;
+	void  test() {
+		System.out.println("a = " + a);
+	}
+	abstract void sum(int a);//추상메소드
+}
+
+public class Exam_08 {
+	
+}

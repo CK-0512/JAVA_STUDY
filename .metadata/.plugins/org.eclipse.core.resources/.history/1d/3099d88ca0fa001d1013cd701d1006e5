@@ -1,0 +1,20 @@
+package com.jslhrd.list;
+
+import java.util.*;
+
+public class Exam_01 {
+	public static void main(String[] args) {
+		//List list = new List();
+		List list = new ArrayList();
+		ArrayList aList = new ArrayList<>();
+		//추가
+		list.add(1234);
+		list.add("Java");
+		list.add(3.14);
+		list.add(true);
+		//리스트 내용 확인
+		System.out.println("list : " + list);
+		//리스트에 저장된 객체 수
+		
+	}
+}

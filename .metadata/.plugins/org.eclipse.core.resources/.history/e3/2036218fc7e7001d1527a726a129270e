@@ -1,0 +1,32 @@
+package com.jslhrd.test02;
+
+public class Student extends Hak {
+	int kor;
+	int eng;
+	int mat;
+	int tot;
+	double avg;
+	int rank;
+
+	public Student(String hakbun, String name, int kor, int eng, int mat) {
+		super(hakbun, name);
+		this.kor = kor;
+		this.eng = eng;
+		this.mat = mat;
+		this.tot = kor + mat + eng;
+		this.avg = tot / 3.;
+	}
+	
+	public void titlePrint() {
+		System.out.println("학년\t반\t번호\t이름\t국어\t영어\t수학\t총점\t평균\t석차");
+	}
+	
+	public void dataPrint() {
+		String sclass = hakbun.substring(0, 1);//학년분리
+		String sban = hakbun.substring(1, 2);//반분리
+		String sno = hakbun.substring(3);//번호분리
+		
+		System.out.printf("%s	%s	%s	%s	%d	%d	%d	%d	%.2f	%d", sclass, sban, sno, name, kor, eng, mat, tot, avg, rank);
+	}
+	
+}

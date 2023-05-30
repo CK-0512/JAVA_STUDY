@@ -1,0 +1,19 @@
+package com.jslhrd.list;
+
+import java.util.ArrayList;
+import java.util.List;
+
+//제너릭타입 <E>
+public class Exam_02 {
+	public static void main(String[] args) {
+		List<String> list = new ArrayList<String>();
+		//List<String> list = new ArrayList();
+		//list.add(1234);
+		list.add("1234");
+		list.add("abcd");
+		list.add("3.4");
+		list.add(String.valueOf(1234));
+		
+		String s = list.get(0);
+	}
+}

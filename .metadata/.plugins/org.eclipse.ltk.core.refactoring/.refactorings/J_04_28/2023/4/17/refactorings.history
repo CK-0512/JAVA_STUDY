@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.jslhrd.school.SchoolExan&apos; to &apos;SchoolExam&apos;&#x0D;&#x0A;- Original project: &apos;J_04_28&apos;&#x0D;&#x0A;- Original element: &apos;com.jslhrd.school.SchoolExan&apos;&#x0D;&#x0A;- Renamed element: &apos;com.jslhrd.school.SchoolExam&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;SchoolExan&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.jslhrd.school{SchoolExan.java[SchoolExan" matchStrategy="1" name="SchoolExam" qualified="false" references="true" similarDeclarations="false" stamp="1682642771003" textual="false" version="1.0"/>
+</session>

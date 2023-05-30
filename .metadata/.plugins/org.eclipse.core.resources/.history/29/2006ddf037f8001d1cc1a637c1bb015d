@@ -1,0 +1,11 @@
+package com.jslgrd.datetime;
+
+import java.util.Date;
+
+public class Exam_01 {
+	public static void main(String[] args) {
+		Date now = new Date();
+		System.out.println("today : " +now);
+		System.out.println("today : " +now.toString());
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;student.txt&apos; to &apos;J_05_19/src/com.jslhrd.student&apos;&#x0D;&#x0A;- Original project: &apos;J_05_18&apos;&#x0D;&#x0A;- Destination element: &apos;J_05_19/src/com.jslhrd.student&apos;&#x0D;&#x0A;- Original element: &apos;student.txt&apos;" description="Copy file" destination="=J_05_19/src&lt;com.jslhrd.student" element1="src/com/jslhrd/student/student.txt" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1684455845743" units="0" version="1.0"/>
+</session>

@@ -1,0 +1,11 @@
+package com.jslhrd.test02;
+
+public class StudentExam {
+	public static void main(String[] args) {
+		Hak h = new Hak("1101", "홍길동");
+		h.titlePrint();
+		h.dataPrint();
+		
+		Hak h1 = new Student("1101", "홍길동", 65, 75, 54);
+	}
+}

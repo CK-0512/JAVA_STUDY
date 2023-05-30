@@ -1,0 +1,20 @@
+package com.jslhrd.test02;
+
+public class Student extends Hak {
+	int kor;
+	int eng;
+	int mat;
+	int tot;
+	double avg;
+	int rank;
+
+	public Student(String hakbun, String name, int kor, int eng, int mat) {
+		super(hakbun, name);
+		this.kor = kor;
+		this.eng = eng;
+		this.mat = mat;
+		this.tot = kor + mat + eng;
+		this.avg = tot / 3.;
+	}
+	
+}

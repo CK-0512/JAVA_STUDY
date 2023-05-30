@@ -1,0 +1,27 @@
+package com.jslhrd.member;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
+public class MemberExam {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		List<Member> members = new ArrayList<>();
+		
+		while (true) {
+			System.out.print("멤버 등록 : ");
+			String reg = sc.nextLine();
+			StringTokenizer st = new StringTokenizer(reg, ", ");
+			int id = Integer.parseInt(st.nextToken());
+			if (String.valueOf(id).equals("end"))
+				break;
+			String name = st.nextToken();
+			String email = st.nextToken();
+			
+			Member member = new Member(id, name, email);
+			members.add(member);
+		}
+	}
+}

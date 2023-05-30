@@ -1,0 +1,10 @@
+package com.jslhrd.test02;
+
+public class Hak {
+	String hakbun;
+	String name;
+	public Hak(String hakbun, String name) {
+		this.hakbun = hakbun;
+		this.name = name;
+	}
+}
