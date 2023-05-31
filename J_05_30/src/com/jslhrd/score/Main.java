@@ -36,7 +36,7 @@ public class Main {
 				System.out.println("이미 등록된 학생입니다.");
 				continue;
 			}
-			Score score = new Score(kor, mat, eng);
+			Score score = new Score(kor, eng, mat);
 			score.setTot(tot);
 			score.setAvg(avg);
 			map.put(std, score);
@@ -59,7 +59,7 @@ public class Main {
 		for(Score value : col) {
 			sum += value.getTot();
 		}
-		avg = (int)(sum/(double)map.size() * 10 + 0.5) / 10.;
+		avg = sum/(double)map.size();
 		maxTot = (Collections.max(col)).getTot();
 		minTot = (Collections.min(col)).getTot();
 		
