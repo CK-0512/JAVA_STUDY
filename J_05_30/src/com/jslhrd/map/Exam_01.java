@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Exam_01 {
 	public static void main(String[] args) {
-		Map map = new HashMap();
+		Map<String, Integer> map = new HashMap();
 		//저장
 		map.put("A", 90);
 		map.put("D", 77);
