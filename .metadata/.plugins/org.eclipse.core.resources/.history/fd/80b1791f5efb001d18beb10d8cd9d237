@@ -1,7 +1,0 @@
-package com.jslhrd.list;
-
-public class StudentExam {
-	public static void main(String[] args) {
-		
-	}
-}
