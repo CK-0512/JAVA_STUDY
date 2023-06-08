@@ -5,8 +5,6 @@ public class Score {
 	private String secondScore;
 	private String lastScore;
 	private int frameScore;
-	private boolean strike;
-	private boolean spare;
 	
 	public Score(String firstScore, String secondScore) {
 		this.firstScore = firstScore;
@@ -17,22 +15,6 @@ public class Score {
 		this.firstScore = firstScore;
 		this.secondScore = secondScore;
 		this.lastScore = lastScore;
-	}
-	
-	public boolean isStrike() {
-		return strike;
-	}
-
-	public void setStrike(boolean strike) {
-		this.strike = strike;
-	}
-
-	public boolean isSpare() {
-		return spare;
-	}
-
-	public void setSpare(boolean spare) {
-		this.spare = spare;
 	}
 
 	@Override

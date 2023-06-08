@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="Predator"/>
     <fullyQualifiedTypeName name="Barkable"/>
     <fullyQualifiedTypeName name="Studant"/>
     <fullyQualifiedTypeName name="StudentProcess"/>
@@ -26,7 +25,6 @@
     <fullyQualifiedTypeName name="com.jslhrd.ex04.Outer.Inner"/>
     <fullyQualifiedTypeName name="java.lang.ArrayIndexOutOfBoundsException"/>
     <fullyQualifiedTypeName name="java.io.IOException"/>
-    <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
     <fullyQualifiedTypeName name="com.jslhrd.member.MemberData"/>
     <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
 </qualifiedTypeNameHistroy>
