@@ -3,7 +3,7 @@ package com.jslhrd.bowling2;
 public class Score {
 	private int firstScore;
 	private int secondScore;
-	private String lastScore;
+	private int lastScore;
 	private int frameScore;
 	private int strike;
 	private boolean spare;
@@ -12,15 +12,24 @@ public class Score {
 		this.firstScore = firstScore;
 	}
 	
-	public Score(int firstScore, int secondScore) {
+	public Score(int firstScore, int secondScore, int strike) {
 		this.firstScore = firstScore;
 		this.secondScore = secondScore;
+		this.strike = strike;
 	}
 	
-	public Score(int firstScore, int secondScore, String lastScore) {
+	public Score(int firstScore, int secondScore, boolean spare) {
+		this.firstScore = firstScore;
+		this.secondScore = secondScore;
+		this.spare = spare;
+	}
+	
+	public Score(int firstScore, int secondScore, int lastScore, int strike, boolean spare) {
 		this.firstScore = firstScore;
 		this.secondScore = secondScore;
 		this.lastScore = lastScore;
+		this.strike = strike;
+		this.spare = spare;
 	}
 
 	public int getStrike() {
@@ -55,11 +64,11 @@ public class Score {
 		this.secondScore = secondScore;
 	}
 
-	public String getLastScore() {
+	public int getLastScore() {
 		return lastScore;
 	}
 	
-	public void setLastScore(String lastScore) {
+	public void setLastScore(int lastScore) {
 		this.lastScore = lastScore;
 	}
 

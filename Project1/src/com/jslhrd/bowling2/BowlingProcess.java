@@ -8,8 +8,6 @@ public class BowlingProcess {
 	List<Score> scores = new ArrayList<>();
 	Score score;
 	Scanner sc;
-	int strike;
-	boolean spare;
 
 	public void scoreRegister() {
 		sc = new Scanner(System.in);
@@ -19,9 +17,10 @@ public class BowlingProcess {
 		String[] regBits = reg.split(" ");
 		int firstScore;
 		int secondScore;
-		String lastScore;
-		strike = 0;
-
+		int lastScore;
+		int strike = 0;
+		boolean spare = false;
+		
 		for (int i = 0; i < regBits.length; i++) {
 			if (Integer.parseInt(regBits[i]) > 10 || Integer.parseInt(regBits[i]) < 0) {
 				registerError();
@@ -37,21 +36,25 @@ public class BowlingProcess {
 					if (firstScore == 10 || secondScore == 10 || firstScore + secondScore >= 10) {
 						registerError();
 					}
-					score = new Score(firstScore, secondScore);
+					score = new Score(firstScore, secondScore, strike);
 				} else {
-					lastScore = regBits[i + 2];
+					lastScore = Integer.parseInt(regBits[i + 2]);
 					
-					if (secondScore != 10 && secondScore + Integer.parseInt(lastScore) > 10)
+					if (secondScore != 10 && secondScore + lastScore > 10)
 						registerError();
 					
-					if (firstScore != 10)
+					if (firstScore != 10) {
 						spare = true;
-					else if (secondScore != 10 && secondScore + Integer.parseInt(lastScore) == 10)
-						lastScore = "/";
-					else if (Integer.parseInt(lastScore) == 10) 
-						lastScore = "X";
+				    } else if (secondScore != 10 && secondScore + lastScore == 10) {
+						strike++;
+						spare = true;
+					} else if (secondScore == 10) {
+						strike += 2;
+						if (lastScore == 10)
+							strike++;
+					}
 					
-					score = new Score(firstScore, secondScore, lastScore);
+					score = new Score(firstScore, secondScore, lastScore, strike, spare);
 					scores.add(score);
 					break;
 				}
@@ -61,15 +64,16 @@ public class BowlingProcess {
 						registerError();
 					
 					if (firstScore == 10) {
+						secondScore = 0;
 						strike++;
-						score = new Score(firstScore);
+						score = new Score(firstScore, secondScore, strike);
 						i--;
 					}
 					else if (firstScore + secondScore == 10) {
 						spare = true;
-						score = new Score(firstScore, secondScore);
+						score = new Score(firstScore, secondScore, spare);
 					} else {
-						score = new Score(firstScore, secondScore);
+						score = new Score(firstScore, secondScore, strike);
 					}
 				}
 			scores.add(score);
@@ -81,6 +85,7 @@ public class BowlingProcess {
 		
 		calFrameScore();
 	}
+}
 
 	private void registerError() {
 		System.out.println("입력 오류");
@@ -91,77 +96,42 @@ public class BowlingProcess {
 		int frameScore = 0;
 		
 		for (int i = 0; i < scores.size() - 1; i++) {
-			if (scores.get(i).getStrike()) 
+			if (scores.get(i).getStrike() == 1) 
 				frameScore = calStrikeFrameScore(i);
 			else if (scores.get(i).getSpare()) {
-				if (scores.get(i + 1).getFirstScore() == 10)
-					frameScore = 20;
-				else
-					frameScore = 10 + scores.get(i + 1).getFirstScore();
+				frameScore = 10 + scores.get(i + 1).getFirstScore();
 			}
 			else
 				frameScore = scores.get(i).getFirstScore() + scores.get(i).getSecondScore();
 			
 			scores.get(i).setFrameScore(frameScore);
-			calLastFrameScore();
 		}
+		scores.get(scores.size() - 1).setFrameScore(calLastFrameScore());
 	}
 
-	private void calLastFrameScore() {
-		int firstScore = 0;
-		int secondScore = 0;
-		int lastFrameScore = 0;
-
-		if (scores.get(scores.size() - 1).getFirstScore() )
-			firstScore = 10;
+	private int calLastFrameScore() {
+		if (scores.get(scores.size() - 1).getSpare() || scores.get(scores.size() - 1).getStrike() != 0) 
+			return scores.get(scores.size() - 1).getFirstScore() + scores.get(scores.size() - 1).getSecondScore() +
+					scores.get(scores.size() - 1).getLastScore();
 		else
-			firstScore = Integer.parseInt(scores.get(scores.size() - 1).getFirstScore());
-
-		if (scores.get(scores.size() - 1).getSecondScore().equals("X"))
-			secondScore = 10;
-		else if (scores.get(scores.size() - 1).getSecondScore().equals("/"))
-			secondScore = 10 - firstScore;
-		else
-			secondScore = Integer.parseInt(scores.get(scores.size() - 1).getSecondScore());
-
-		if (scores.get(scores.size() - 1).getLastScore().equals("X")) 
-			lastFrameScore = firstScore + secondScore + 10;
-		else if (scores.get(scores.size() - 1).getLastScore().equals("/"))
-			lastFrameScore = 20;
-		else {
-			if (scores.get(scores.size() - 1).getLastScore().equals(" "))
-				lastFrameScore = firstScore + secondScore;
-			else 
-				lastFrameScore = firstScore + secondScore + Integer.parseInt(scores.get(scores.size() - 1).getLastScore());
-		}
-		
-		scores.get(scores.size() - 1).setFrameScore(lastFrameScore);
+			return scores.get(scores.size() - 1).getFirstScore() + scores.get(scores.size() - 1).getSecondScore();
 	}
 
 	private int calStrikeFrameScore(int i) {
 		int strikeFrameScore;
 		
-		if (!scores.get(i + 1).getFirstScore().equals("X")) {
-			if (!scores.get(i + 1).getSecondScore().equals("/"))
-				strikeFrameScore = 10 + Integer.parseInt(scores.get(i + 1).getFirstScore()) + Integer.parseInt(scores.get(i + 1).getSecondScore());
-			else 
-				strikeFrameScore = 20;
+		if (scores.get(i + 1).getFirstScore() != 10) {
+				strikeFrameScore = 10 + scores.get(i + 1).getFirstScore() + scores.get(i + 1).getSecondScore();
 		} else { 
-			if (i + 2 < scores.size()) {
-				if (!scores.get(i + 2).getFirstScore().equals("X")) 
-					strikeFrameScore = 20 + Integer.parseInt(scores.get(i + 2).getFirstScore());
-				else
-					strikeFrameScore = 30;
-			}
+			if (i + 2 < scores.size()) 
+				strikeFrameScore = 20 + scores.get(i + 2).getFirstScore();
 			else
-				strikeFrameScore = 20 + Integer.parseInt(scores.get(i + 1).getSecondScore());
+				strikeFrameScore = 20 + scores.get(i + 1).getSecondScore();
 		}
 		return strikeFrameScore;
 	}
 
 	public void scorePrint() {
-		if (scores.size() != 10)
-			return;
 		
 		int totFrameScore = 0;
 		
@@ -171,7 +141,12 @@ public class BowlingProcess {
 		System.out.println("|    10회    |");
 		
 		for (int i = 0; i < scores.size() - 1; i++) {
-			System.out.print(scores.get(i));
+			if (scores.get(i).getStrike() == 1)
+				System.out.printf("| X |   ");
+			else if (scores.get(i).getSpare())
+				System.out.printf("| %d | / ", scores.get(i).getFirstScore());
+			else
+				System.out.printf("| %d | %d ", scores.get(i).getFirstScore(), scores.get(i).getSecondScore());
 		}
 		System.out.println(scores.get(scores.size() - 1) + "| " + scores.get(scores.size() - 1).getLastScore() + "  |");
 		
