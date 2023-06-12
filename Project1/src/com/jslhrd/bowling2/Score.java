@@ -8,19 +8,10 @@ public class Score {
 	private int strike;
 	private boolean spare;
 	
-	public Score(int firstScore) {
-		this.firstScore = firstScore;
-	}
-	
-	public Score(int firstScore, int secondScore, int strike) {
+	public Score(int firstScore, int secondScore, int strike, boolean spare) {
 		this.firstScore = firstScore;
 		this.secondScore = secondScore;
 		this.strike = strike;
-	}
-	
-	public Score(int firstScore, int secondScore, boolean spare) {
-		this.firstScore = firstScore;
-		this.secondScore = secondScore;
 		this.spare = spare;
 	}
 	
