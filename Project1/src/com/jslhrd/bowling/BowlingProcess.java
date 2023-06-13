@@ -8,6 +8,7 @@ public class BowlingProcess {
 	List<Score> scores = new ArrayList<>();
 	Score score;
 	Scanner sc;
+	int lastFrame;
 
 	public void scoreRegister() {
 		sc = new Scanner(System.in);
@@ -81,9 +82,10 @@ public class BowlingProcess {
 	}
 
 	private void calFrameScore() {
+		lastFrame = scores.size() - 1;
 		int frameScore = 0;
 		
-		for (int i = 0; i < scores.size() - 1; i++) {
+		for (int i = 0; i < lastFrame; i++) {
 			if (scores.get(i).getFirstScore().equals("X")) 
 				frameScore = calStrikeFrameScore(i);
 			else if (scores.get(i).getSecondScore().equals("/")) {
@@ -101,34 +103,35 @@ public class BowlingProcess {
 	}
 
 	private void calLastFrameScore() {
+		lastFrame = scores.size() - 1;
 		int firstScore = 0;
 		int secondScore = 0;
 		int lastFrameScore = 0;
 
-		if (scores.get(scores.size() - 1).getFirstScore().equals("X"))
+		if (scores.get(lastFrame).getFirstScore().equals("X"))
 			firstScore = 10;
 		else
-			firstScore = Integer.parseInt(scores.get(scores.size() - 1).getFirstScore());
+			firstScore = Integer.parseInt(scores.get(lastFrame).getFirstScore());
 
-		if (scores.get(scores.size() - 1).getSecondScore().equals("X"))
+		if (scores.get(lastFrame).getSecondScore().equals("X"))
 			secondScore = 10;
-		else if (scores.get(scores.size() - 1).getSecondScore().equals("/"))
+		else if (scores.get(lastFrame).getSecondScore().equals("/"))
 			secondScore = 10 - firstScore;
 		else
-			secondScore = Integer.parseInt(scores.get(scores.size() - 1).getSecondScore());
+			secondScore = Integer.parseInt(scores.get(lastFrame).getSecondScore());
 
-		if (scores.get(scores.size() - 1).getLastScore().equals("X")) 
+		if (scores.get(lastFrame).getLastScore().equals("X")) 
 			lastFrameScore = firstScore + secondScore + 10;
-		else if (scores.get(scores.size() - 1).getLastScore().equals("/"))
+		else if (scores.get(lastFrame).getLastScore().equals("/"))
 			lastFrameScore = 20;
 		else {
-			if (scores.get(scores.size() - 1).getLastScore().equals(" "))
+			if (scores.get(lastFrame).getLastScore().equals(" "))
 				lastFrameScore = firstScore + secondScore;
 			else 
-				lastFrameScore = firstScore + secondScore + Integer.parseInt(scores.get(scores.size() - 1).getLastScore());
+				lastFrameScore = firstScore + secondScore + Integer.parseInt(scores.get(lastFrame).getLastScore());
 		}
 		
-		scores.get(scores.size() - 1).setFrameScore(lastFrameScore);
+		scores.get(lastFrame).setFrameScore(lastFrameScore);
 	}
 
 	private int calStrikeFrameScore(int i) {
@@ -153,26 +156,27 @@ public class BowlingProcess {
 	}
 
 	public void scorePrint() {
+		lastFrame = scores.size() - 1;
 		if (scores.size() != 10)
 			return;
 		
 		int totFrameScore = 0;
 		
-		for (int i = 1; i <= scores.size() - 1; i++) {
+		for (int i = 1; i <= lastFrame; i++) {
 			System.out.printf("|  %d회  ", i);
 		}
 		System.out.println("|    10회    |");
 		
-		for (int i = 0; i < scores.size() - 1; i++) {
+		for (int i = 0; i < lastFrame; i++) {
 			System.out.print(scores.get(i));
 		}
-		System.out.println(scores.get(scores.size() - 1) + "| " + scores.get(scores.size() - 1).getLastScore() + "  |");
+		System.out.println(scores.get(lastFrame) + "| " + scores.get(lastFrame).getLastScore() + "  |");
 		
-		for (int i = 0; i < scores.size() - 1; i++) {
+		for (int i = 0; i < lastFrame; i++) {
 			totFrameScore += scores.get(i).getFrameScore();
 			System.out.printf("|  %3d  ", totFrameScore);
 		}
-		totFrameScore += scores.get(scores.size() - 1).getFrameScore();
+		totFrameScore += scores.get(lastFrame).getFrameScore();
 		System.out.printf("|    %3d     |\n", totFrameScore);
 		
 		System.out.println("총점 : " + totFrameScore + "점");
