@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="EmployeeProcess"/>
-    <fullyQualifiedTypeName name="StudentPackage.StudentProcess"/>
-    <fullyQualifiedTypeName name="com.jshrdTest02.EE"/>
     <fullyQualifiedTypeName name="com.jshrdTest02.Persion"/>
     <fullyQualifiedTypeName name="com.jshrd.student.StudentProcess"/>
     <fullyQualifiedTypeName name="com.jslhd.contest.ContestProcess"/>
@@ -58,6 +55,9 @@
     <fullyQualifiedTypeName name="java.sql.DriverManager"/>
     <fullyQualifiedTypeName name="java.sql.Statement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="com.jslhrd.jdbcExam.util.DBManger"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="util.DBManger"/>
+    <fullyQualifiedTypeName name="dto.DeptDTO"/>
+    <fullyQualifiedTypeName name="dto.EmpDTO"/>
 </qualifiedTypeNameHistroy>

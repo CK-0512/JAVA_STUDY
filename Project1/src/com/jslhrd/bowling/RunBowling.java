@@ -1,4 +1,4 @@
-package com.jslhrd.bowling;
+   package com.jslhrd.bowling;
 
 public class RunBowling {
 	public static void main(String[] args) {
