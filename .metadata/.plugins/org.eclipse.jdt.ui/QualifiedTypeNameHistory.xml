@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.jslhd.contest.ContestProcess"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="com.jshrd.school.SchoolProcess"/>
     <fullyQualifiedTypeName name="com.jshrd.school.Student"/>
     <fullyQualifiedTypeName name="com.jlshard.exam01.ChildPerson"/>
@@ -58,6 +56,8 @@
     <fullyQualifiedTypeName name="dto.DeptDTO"/>
     <fullyQualifiedTypeName name="dto.EmpDTO"/>
     <fullyQualifiedTypeName name="com.jslhrd.sawon.dao.EmpDAO"/>
-    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="com.jslhrd.sawon.util.DBManger"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="com.jslhrd.emp.util.DBManger"/>
+    <fullyQualifiedTypeName name="com.jslhrd.emp.dao.EmpDAO"/>
 </qualifiedTypeNameHistroy>
